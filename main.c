@@ -11,6 +11,7 @@
 #include <event.h>
 #include <evhttp.h>
 #include <string.h>
+#include <fcntl.h>
 
 #define VERSION "1.0"
 
