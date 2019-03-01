@@ -3,5 +3,5 @@ project(git_hookd C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(main.c)
+add_executable(git_hookd main.c)
 target_link_libraries(git_hookd event)
