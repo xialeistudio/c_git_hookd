@@ -10,6 +10,7 @@
 #include <semaphore.h>
 #include <event.h>
 #include <evhttp.h>
+#include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
 
