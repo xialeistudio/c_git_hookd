@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
-#include <sys/types.h>
+#include <sys/wait.h>
 
 #define VERSION "1.0"
 
