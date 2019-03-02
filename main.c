@@ -16,6 +16,7 @@
 #include <sys/wait.h>
 
 #define VERSION "1.0"
+#define SEM_NAME "git-hookd"
 
 static const struct option long_options[] = {
     {"host", required_argument, NULL, 'l'},
@@ -110,7 +111,11 @@ int main(int argc, char **argv) {
     }
   }
 
-  sem = sem_open("git-hookd", O_CREAT | O_EXCL, 0644, 1);
+  sem = sem_open(SEM_NAME, O_CREAT | O_EXCL, 0644, 1);
+  if (sem == SEM_FAILED) {
+    perror("sem_open failed:");
+    return 1;
+  }
   event_init();
   struct evhttp *server = evhttp_start(host, (uint16_t) port);
   evhttp_set_gencb(server, handle_request, NULL);
@@ -119,5 +124,6 @@ int main(int argc, char **argv) {
 
   evhttp_free(server);
   sem_close(sem);
+  sem_unlink(SEM_NAME);
   return 0;
 }
