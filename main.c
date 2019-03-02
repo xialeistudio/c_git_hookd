@@ -111,9 +111,9 @@ int main(int argc, char **argv) {
     }
   }
 
-  sem = sem_open(SEM_NAME, O_CREAT | O_EXCL, 0644, 1);
+  sem = sem_open(SEM_NAME, O_CREAT, 0644, 1);
   if (sem == SEM_FAILED) {
-    perror("sem_open failed:");
+    perror("sem_open failed");
     return 1;
   }
   event_init();
